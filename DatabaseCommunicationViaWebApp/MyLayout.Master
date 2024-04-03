@@ -1,0 +1,54 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MyLayout.master.cs" Inherits="DatabaseCommunicationViaWebApp.MyLayout" %>
+
+<%@ Register Src="~/UserControl/Header.ascx" TagPrefix="MUC" TagName="Header" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <MUC:Header ID="Header" runat="server" />
+
+        <div>
+            <asp:ContentPlaceHolder ID="MainContentHolder" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <div>
+            <hr />
+            <p>Copyright VHaaShTech@2024</p>
+            <%-- <MUC:Header ID="HeaderInBottom" runat="server"/>--%>
+        </div>
+    </div>
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
+    <script src="Scripts/jquery-3.7.1.min.js"></script>
+    <script src="Scripts/jquery.validate.min.js"></script>
+    <script src="Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        function validateAgeAsEven(obj, args) {
+            if (args.Value % 2 == 0) {
+                args.IsValid = true;
+            }
+            else {
+                args.IsValid = false;
+            }
+        }
+
+        $(function () {
+
+            $('table a:contains("Edit")').click(function () {
+                return confirm("You are sure you want to modify row?");
+            });
+
+            $('table a:contains("Delete")').click(function () {
+                return confirm("You are sure you want to delete row?");
+            });
+
+        });
+    </script>
+</body>
+</html>
